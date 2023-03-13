@@ -1,0 +1,36 @@
+ <div class="col-md-3">
+            <mat-form-field appearance="outline"  >
+              <mat-label>Independent Developer</mat-label>
+              <mat-select disableOptionCentering panelClass="myPanelClass" matNativeControl
+                formControlName="independentDeveloper" (selectionChange)="changeIndependentDev($event)">
+                <mat-option value="Yes">Yes</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-3">
+            <mat-form-field appearance="outline" hidden=IsindependentDev [hidden]="hideSuppoetNeed">
+              <mat-label>Support need</mat-label>
+              <mat-select disableOptionCentering panelClass="myPanelClass" matNativeControl
+                formControlName="supportNeed" >
+                <mat-option *ngFor="let sprtneed of SupportNeed |filterRole:searchRole ;index as i" [value]="sprtneed.objectName">{{
+                  sprtneed.objectName }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+		  
+		  
+		  
+		   changeIndependentDev(event) {
+    this.IsindependentDev = event.value;
+    if (this.IsindependentDev == 'Yes') {
+      this.hideSuppoetNeed = true;
+    }
+    else {
+      this.hideSuppoetNeed = false;
+    }
+  }
+		  
+		  
+	 hideSuppoetNeed: boolean = true;
